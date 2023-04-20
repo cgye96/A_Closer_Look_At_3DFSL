@@ -1,4 +1,4 @@
-# FSL3D
+# 3DFSL
 
 The repository contains the code and dataset for these paper:
 
@@ -43,22 +43,10 @@ If you use this code for your research, please cite our papers:
   publisher={Springer}
 }
 ```
-## Bnechmark for FSL3D
-```
-Performance of Prototypical Network and Fine-tune on Few-Shot 3D Point Cloud Classification
-```
-
-```
-backbone:PointNet
-```
-
-```
-backbone:DGCNN
-```
 
 ## Dependencies
 ```
-conda create -n fsl3d python==3.6.x
+conda create -n 3dfsl python==3.6.x
 ```
 * CUDA 10.2
 * Python 3.6
@@ -75,13 +63,13 @@ Nota that, the PointNet2, RS-CNN and DensePoint are tested in the CUDA 10.2 with
 If your CUDA version is higher than 10.2, you may not reproduce these backbones.
 
 ### Installation
-1¡¢Clone this repository:
+1Â¡Â¢Clone this repository:
 ```
     git clone https://github.com/cgye96/FSL3D.git
     cd FSL3D
 ```
     
-2¡¢We have split and processed the datasets, you can download [ModelNet40_FS], [ShapeNet70_FS] and [ScanObjectNN_FS], and put them in ``` ./dataset```
+2Â¡Â¢We have split and processed the datasets, you can download [ModelNet40_FS], [ShapeNet70_FS] and [ScanObjectNN_FS], and put them in ``` ./dataset```
 
 ### Training and Testing
     bash run.sh  
