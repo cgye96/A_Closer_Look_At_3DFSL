@@ -4,7 +4,7 @@ The repository contains the code and dataset for these paper:
 
 [**What Makes for Effective Few-shot Point Cloud Classification?**](https://openaccess.thecvf.com/content/WACV2022/papers/Ye_What_Makes_for_Effective_Few-Shot_Point_Cloud_Classification_WACV_2022_paper.pdf) [WACV 2022]
 
-[**A Closer Look at Few-Shot 3D Point Cloud Classification**](https://link.springer.com/article/10.1007/s11263-022-01731-4) [IJCV 2022]
+[**A Closer Look at Few-Shot 3D Point Cloud Classification**](https://link.springer.com/article/10.1007/s11263-022-01731-4) [IJCV 2023]
 
 
 ### Abstract
@@ -59,22 +59,19 @@ conda create -n 3dfsl python==3.6.x
 * cvxpy (conda install -c conda-forge cvxpy)
 * qpth
 
-Nota that, the PointNet2, RS-CNN and DensePoint are tested in the CUDA 10.2 with Python 3.6 and PyTorch 1.4. 
-If your CUDA version is higher than 10.2, you may not reproduce these backbones.
+Nota that, the PointNet2, RS-CNN and DensePoint are tested in the CUDA 10.2 with Python 3.6 and PyTorch 1.4.If your CUDA version is higher than 10.2, you may fail to test these backbones.
 
 ### Installation
 1¡¢Clone this repository:
 ```
-    git clone https://github.com/cgye96/FSL3D.git
-    cd FSL3D
+    git clone https://github.com/cgye96/A_Closer_Look_At_3DFSL.git
+    cd A_Closer_Look_At_3DFSL
 ```
     
 2¡¢We have split and processed the datasets, you can download [ModelNet40_FS], [ShapeNet70_FS] and [ScanObjectNN_FS], and put them in ``` ./dataset```
 
 ### Training and Testing
     bash run.sh  
-    
-    
 ### 
     
 
