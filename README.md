@@ -1,6 +1,6 @@
 # 3DFSL
 
-The repository contains the code and dataset for these paper:
+The repository contains the official code and dataset for these papers:
 
 [**What Makes for Effective Few-shot Point Cloud Classification?**](https://openaccess.thecvf.com/content/WACV2022/papers/Ye_What_Makes_for_Effective_Few-Shot_Point_Cloud_Classification_WACV_2022_paper.pdf) [WACV 2022]
 
@@ -23,6 +23,83 @@ with minor changes and significantly improve the performance. Experimental resul
 ModelNet40-FS, ShapeNet70-FS, and ScanObjectNN-FS, demonstrate that our method achieves state-of-the-art performance 
 for the 3D FSL task.  
 
+## Datasets for 3DFSL
+To evaluate objectively, we carefully split the existing 3D datasets and construct three
+benchmark datasets, [ModelNet40-FS](https://drive.google.com/drive/folders/18WTIClNOWMM9s6mjhwhfLBTNzINZLfRf?usp=drive_link),
+ [ShapeNet70-FS](https://drive.google.com/drive/folders/1DiRlJ7dB7YrGuc90_2NcpNL7MK3eQBZh?usp=drive_link) 
+ and [ScanObjectNN-FS](https://drive.google.com/drive/folders/1As3Q0-NPDwJn_9xHviftJIQyhrFcHWrh?usp=drive_link), for 3D few-shot point cloud classification
+under different scenarios. You can download them from the google drive and put them in `data/` directory. 
+We greatly thank the contributions to the original datasets, please cite their works when using our few-shot splits.
+
+
+## Dependencies
+Create a new conda environment:
+```
+conda create -n 3dfsl python==3.6.x
+```
+Our experiments conducted on CUDA 10.2 with Pytorch 1.4. You can install pytorch with the following cmds:
+```
+conda install pytorch==1.4.0 torchvision==0.5.0 cudatoolkit=10.1 -c pytorch
+```
+
+You also need to install the following packages:
+```
+h5py
+tqdm
+matplotlib
+tensorboardX
+qpth
+cvxpy  (conda install -c conda-forge cvxpy)
+```
+
+### Installation
+Clone this repository:
+```
+git clone https://github.com/cgye96/A_Closer_Look_At_3DFSL.git
+cd A_Closer_Look_At_3DFSL
+```
+Activate the conda environment:
+```
+conda activtae 3dfsl
+```
+Download the pre-processed datasets [ModelNet40-FS](https://drive.google.com/drive/folders/18WTIClNOWMM9s6mjhwhfLBTNzINZLfRf?usp=drive_link),
+ [ShapeNet70-FS](https://drive.google.com/drive/folders/1DiRlJ7dB7YrGuc90_2NcpNL7MK3eQBZh?usp=drive_link) 
+ and [ScanObjectNN-FS](https://drive.google.com/drive/folders/1As3Q0-NPDwJn_9xHviftJIQyhrFcHWrh?usp=drive_link), put them in ``` ./data```.
+    
+### Training and Testing
+Train and test the model from scratch:
+```
+python main.py  --mode 'train' \
+                --dataset 'ModelNet40_FS' \
+                --backbone 'PointNet' \
+                --method 'protonet' \
+                --exp '_benchmark' \
+                --note 'PN' \
+                \
+                --way 5 \
+                --shot 1 \
+                --k_fold 5 \
+                \
+                --stops 30 \
+                --step 5
+```
+
+## Acknowledgments
+Our code builds upon several existing publicly available code. Specifically, we have modified and integrated the following code into this project:
+
+Framework:  [**CloserLookFewShot**](https://github.com/wyharveychen/CloserLookFewShot).
+
+Backbone:   [**PointNet**](https://github.com/fxia22/pointnet.pytorch),
+ [**PointNet++**](https://github.com/erikwijmans/Pointnet2_PyTorch), 
+ [**DGCNN**](https://github.com/WangYueFt/dgcnn), 
+ [**PointCNN**](https://github.com/rusty1s/pytorch_geometric/blob/master/benchmark/points/point_cnn.py),
+ [**DensePoint**](https://github.com/Yochengliu/DensePoint), 
+ [**RSCNN**](https://github.com/Yochengliu/Relation-Shape-CNN)
+
+2D FSL: [**ProtoNet**](https://github.com/wyharveychen/CloserLookFewShot/blob/master/methods/protonet.py), [**Relation Network**](https://github.com/wyharveychen/CloserLookFewShot/blob/master/methods/relationnet.py), [**MAML**](https://github.com/wyharveychen/CloserLookFewShot/blob/master/methods/maml.py), [**MetaOpt**](https://github.com/kjunelee/MetaOptNet), [**FSLGNN**](https://github.com/vgsatorras/few-shot-gnn)
+
+Thanks very much for their contributions to the community.
+
 ### Citation
 If you use this code for your research, please cite our papers:
 ```
@@ -43,44 +120,3 @@ If you use this code for your research, please cite our papers:
   publisher={Springer}
 }
 ```
-
-## Dependencies
-```
-conda create -n 3dfsl python==3.6.x
-```
-* CUDA 10.2
-* Python 3.6
-* PyTorch 1.4 (conda install pytorch==1.4.0 torchvision==0.5.0 cudatoolkit=10.1 -c pytorch)
-* h5py
-* tqdm
-* plyfile
-* matplotlib
-* tensorboardX
-* cvxpy (conda install -c conda-forge cvxpy)
-* qpth
-
-Nota that, the PointNet2, RS-CNN and DensePoint are tested in the CUDA 10.2 with Python 3.6 and PyTorch 1.4.If your CUDA version is higher than 10.2, you may fail to test these backbones.
-
-### Installation
-1¡¢Clone this repository:
-```
-    git clone https://github.com/cgye96/A_Closer_Look_At_3DFSL.git
-    cd A_Closer_Look_At_3DFSL
-```
-    
-2¡¢We have split and processed the datasets, you can download [ModelNet40_FS], [ShapeNet70_FS] and [ScanObjectNN_FS], and put them in ``` ./dataset```
-
-### Training and Testing
-    bash run.sh  
-### 
-    
-
-    
-## Acknowledgments
-Our code builds upon several existing publicly available code. Specifically, we have modified and integrated the following code into this project:
-
-Framework:  [**CloserLookFewShot**](https://github.com/wyharveychen/CloserLookFewShot).
-
-Backbone:   [**PointNet**], [**PointNet++**], [**DGCNN**], [**PointCNN**], [**DensePoint**], [**RSCNN**]
-
-2D FSL: [**ProtoNet**], [**Relation Network**], [**MAML**], [**MetaOpt**], [**FSLGNN**], [**Meta-Lstm**]
