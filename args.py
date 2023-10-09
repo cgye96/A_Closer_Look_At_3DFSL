@@ -29,7 +29,16 @@ def arg_setting():
     parser.add_argument('--vatask',  type=int, default=600, help='number of validate episodes')
     parser.add_argument('--tetask',  type=int, default=700, help='number of test episodes')
     parser.add_argument('--stops',   type=int, default=80,  help='early stopping epoch')
-
+    
+    # pcia settings
+    parser.add_argument('--CIFh',     type=int,  default=64,     help='[4,8,16,32,64,128]')
+    parser.add_argument('--CIFk',     type=int,  default=20,     help='[5,15,30,45,60,75]')
+    parser.add_argument('--SPFknn',   type=int,  default=16,     help='[1,4,8,16,32]')
+    parser.add_argument('--SPFks',    type=int,  default=8,      help='[4,8,12,16,20,24,28]')
+    parser.add_argument('--SCId',     type=int,  default=32,     help='[4,8,12,16,20,24,28]')
+    parser.add_argument('--npoint',  type=int, default=512, help='number of points in each instance')
+    parser.add_argument('--emb_dims', type=int, default=1024, help='dim of output feature')
+    
     # Opt settings
     parser.add_argument('--gamma',  type=float, default=0.5,     help='gamma for Adam')
     parser.add_argument('--step',   type=int,   default=10,      help='steps for learning scheduler ')
