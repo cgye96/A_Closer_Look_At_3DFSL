@@ -30,7 +30,22 @@ benchmark datasets, [ModelNet40-FS](https://drive.google.com/drive/folders/18WTI
  and [ScanObjectNN-FS](https://drive.google.com/drive/folders/1As3Q0-NPDwJn_9xHviftJIQyhrFcHWrh?usp=drive_link), for 3D few-shot point cloud classification
 under different scenarios. You can download them from the google drive and put them in `data/` directory. 
 We greatly thank the contributions to the original datasets, please cite their works when using our few-shot splits.
-
+```
+data
+  |--ModelNet40_FS
+  |         |--ModelNet40_FS_test.h5
+  |         |--ModelNet40_FS_train.h5
+  |--ShapeNet70_FS
+  |         |--ShapeNet70_FS_test.h5
+  |         |--ShapeNet70_FS_train.h5
+  |--ScanObjectNN_FS
+  |         |--train_scanobjectnn_PB_T50_RS_fsl_1.h5
+  |         |--train_scanobjectnn_PB_T50_RS_fsl_2.h5
+  |         |--train_scanobjectnn_PB_T50_RS_fsl_3.h5
+  |         |--test_scanobjectnn_PB_T50_RS_fsl_1.h5
+  |         |--test_scanobjectnn_PB_T50_RS_fsl_2.h5
+  |         |--test_scanobjectnn_PB_T50_RS_fsl_3.h5
+```
 
 ## Dependencies
 Create a new conda environment:
@@ -67,14 +82,14 @@ Download the pre-processed datasets [ModelNet40-FS](https://drive.google.com/dri
  and [ScanObjectNN-FS](https://drive.google.com/drive/folders/1As3Q0-NPDwJn_9xHviftJIQyhrFcHWrh?usp=drive_link), put them in ``` ./data```.
     
 ### Training and Testing
-Train and test the model from scratch:
+Train and test the PCIA model from scratch:
 ```
 python main.py  --mode 'train' \
                 --dataset 'ModelNet40_FS' \
                 --backbone 'PointNet' \
-                --method 'protonet' \
+                --method 'pcia' \
                 --exp '_benchmark' \
-                --note 'PN' \
+                --note 'NOTE' \
                 \
                 --way 5 \
                 --shot 1 \
