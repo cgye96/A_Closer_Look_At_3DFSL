@@ -5,4 +5,4 @@ from. fslgnn import FSL_GNN
 from. metaoptnet import MetaOptNet
 from. maml import MAML
 
-from .fsl3d import FSL3D
+from .pcia import FSL3D
