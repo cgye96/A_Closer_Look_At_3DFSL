@@ -96,7 +96,7 @@ def init_fsl_head(args, backbone):
         model = MAML(args=args)
     elif args.method == 'metaoptnet':
         model = MetaOptNet(backbone=backbone, args=args)
-    elif args.method == 'fsl3d':
+    elif args.method == 'pcia':
         model = FSL3D(backbone=backbone, args=args)
     else:
         raise RuntimeError('Not implementation!')
